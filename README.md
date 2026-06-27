@@ -81,6 +81,47 @@ git clone https://github.com/androsland/claude-council ~/.claude/skills/council
 Either way, the skill auto-invokes on the triggers above, or you can run it
 explicitly with `/council`.
 
+## How to use
+
+1. **Bring a real decision with stakes and context.** The council is wasted on
+   "should I use tabs or spaces." Give it something like:
+
+   > "We're an 8-person team with a working monolith. Should we rewrite to
+   > microservices this year, or modularize in place? **Council this.**"
+
+   The more context you give (constraints, what you're leaning toward, what
+   you're worried about), the sharper the advisors are — and the skill
+   deliberately strips your lean before the advisors see it, so stating it
+   doesn't bias them.
+
+2. **It runs four passes (a few minutes):**
+   - **Frame** — restates your decision as a neutral question, options laid flat.
+   - **Five advisors** answer independently and in parallel — Contrarian,
+     First-Principles, Expansionist, Outsider, Executor — each ending with a
+     confidence score and a "what would change my mind."
+   - **Anonymous peer review** — advisors critique each other's answers blind
+     (relabeled A–E), surfacing the strongest argument, the weakest, and what
+     everyone missed.
+   - **Chairman synthesis** — one verdict that *preserves* disagreement.
+
+3. **Read the verdict in this order** (it's structured, not a wall of text):
+   - **Recommendation** + its confidence and the single assumption it rests on.
+   - **First action** — the cheapest reversible step to take now.
+   - **Tripwire** — the earliest signal you chose wrong, so you can bail early.
+   - ⚠️ **Convergence caveat** — if all five agreed, the chairman flags it as
+     *possible shared bias* (it's one model in five hats), not proof. Treat
+     unanimity as "the conventional answer, stated confidently."
+   - **Blind spots & unknowns** — what to go find out before committing.
+
+4. **Cost control.** A full run is ~11 model calls. For a smaller decision, ask
+   for **lite mode** ("council this, lite") — 3 advisors, no peer-review round,
+   roughly half the spend.
+
+5. **Keep the transcript.** Each run writes a timestamped
+   `council-<slug>-<date>.md` in your working directory with every advisor
+   response and the full synthesis. See [EXAMPLE.md](./EXAMPLE.md) for what one
+   looks like.
+
 ## Credits
 
 - The **LLM Council** pattern is Andrej Karpathy's idea.
