@@ -42,6 +42,13 @@ disagreements (preserved), blind spots, a recommendation with its key assumption
 a cheapest-reversible first action, and a **tripwire** — the earliest signal that
 you chose wrong.
 
+## See it in action
+
+[**EXAMPLE.md**](./EXAMPLE.md) is a real, unedited run on "rewrite the monolith
+into microservices, or modularize in place?" — all five advisors, the anonymized
+peer-review round, and the chairman synthesis (including how it flags the
+five-way agreement as *possible shared bias* rather than corroboration).
+
 ## Cost
 
 A full run is ~11+ model invocations (5 advisors → peer review → chairman) and a
