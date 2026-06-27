@@ -58,12 +58,21 @@ yes/no questions, or trivial choices.
 
 ## Install
 
+**Recommended — via the [skills.sh](https://www.skills.sh) CLI** (works with Claude
+Code, Codex, Cursor, Cline, and 15+ other agents):
+
+```bash
+npx skills add androsland/claude-council
+```
+
+**Or manually for Claude Code:**
+
 ```bash
 git clone https://github.com/androsland/claude-council ~/.claude/skills/council
 ```
 
-Or just drop `SKILL.md` into `~/.claude/skills/council/SKILL.md`. That's it — the
-skill auto-invokes on the triggers above, or run it explicitly with `/council`.
+Either way, the skill auto-invokes on the triggers above, or you can run it
+explicitly with `/council`.
 
 ## Credits
 
